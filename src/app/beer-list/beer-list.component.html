@@ -1,0 +1,32 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><img [src]="beer.image" [alt]="beer.name"/></td>
+            <td>{{beer.name}}</td>
+            <td>{{beer.type}}</td>
+            <td>{{beer.description}}</td>
+            <td>${{beer.price}}</td> 
+        </tr>
+        <tr>
+            <td>AMBER LAGER</td>
+            <td>Lager</td>
+            <td>Sus maltas le otorgan un color ámbar rojizo y un sabor balanceado entre el dulzor y el amargor. IBU 18 ALC% 4.5</td>
+            <td>$180</td>
+        </tr>
+        <tr>
+            <td>PINK APA</td>
+            <td>APA</td>
+            <td>De bajo contenido alcohólico, fuerte presencia en aroma y gusto de lúpulo americano. Destacan notas cítricas y de frutas tropicales. IBU 35 ALC% 3.5</td>
+            <td>$200</td>
+        </tr>
+    </tbody>
+</table>
