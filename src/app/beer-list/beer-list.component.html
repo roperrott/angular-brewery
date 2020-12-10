@@ -20,13 +20,7 @@
             <td>{{beer.price | currency}}</td> 
             <td><span *ngIf="beer.stock == 0" class="badge bg-danger">Sin stock</span></td> 
             <td width="120">
-                <div class="input-group" >
-                <button class="btn btn-primary btn-sm" (click)="downQuantity(beer)">-</button>
-                <input
-                type="text" 
-                [(ngModel)]="beer.quantity">
-                <button class="btn btn-primary btn-sm" (click)="upQuantity(beer)">+</button>
-                </div>
+                <app-input-integer [beer]="beer" *ngIf="beer.stock"></app-input-integer>
             </td>
         </tr>
     </tbody>
