@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Beer } from '../beer-list/Beer';
 
 @Component({
@@ -11,27 +11,41 @@ export class InputIntegerComponent implements OnInit {
   constructor() { }
 
   @Input()
-  beer: Beer;
+  quantity: number;
+
+  @Input()
+  max: number;
+
+  @Output()
+  quantityChange:EventEmitter<number> = new EventEmitter<number>();
+
+  @Output()
+  maxReached:EventEmitter<string> = new EventEmitter<string>();
 
   ngOnInit(): void {
   }
 
-  upQuantity(beer: Beer): void{
-    if(beer.quantity < beer.stock){
-      beer.quantity++;
+  upQuantity(): void{
+    if(this.quantity < this.max){
+      this.quantity++;
+      this.quantityChange.emit(this.quantity);
+    }else{
+      this.maxReached.emit("Se ha alcanzado el maximo disponible");
     }
     
   }
 
-  downQuantity(beer: Beer): void{
-    if(beer.quantity > 0){
-      beer.quantity--;
+  downQuantity(): void{
+    if(this.quantity > 0){
+      this.quantity--;
+      this.quantityChange.emit(this.quantity);
     }
     
   }
 
-  changeQuantity(event, beer: Beer) :void{
+  changeQuantity(event) :void{
     console.log(event.key);
+    this.quantityChange.emit(this.quantity);
   }
 
 }
